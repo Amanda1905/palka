@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Text(
                     'Amanda Putri',
-                    style: boldBlackTextStyle.copyWith(fontSize: 12),
+                    style: boldBlackTextStyle.copyWith(fontSize: 13),
                   ),
                 ],
               ),
@@ -41,29 +41,36 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
+        body: SingleChildScrollView(
+          child: Padding(
+           padding: const EdgeInsets.all(16),
+           child: Column(
+             children: [
               ClipRRect(
-                borderRadius: BorderRadiusDirectional.circular(28),
-                child: SizedBox(
-                  height: 170,
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        'assets/images/banner.png',
-                      ),
-                      const Text(
-                        'make delivering your cargo easier and more practical',
-                      ),
-                    ],
-                  ),
+                borderRadius: BorderRadius.circular(28),
+              child: Stack(
+                 children: [
+                   Image.asset('assets/images/banner.png'),
+                   Positioned(
+                     top: 50,
+                     left: 0,
+                     right: 0,
+                     child: Text(
+                     'make delivering your cargo\neasier and more practical',
+                     style: regularwhitetext.copyWith(fontSize: 18),
+                     textAlign: TextAlign.center,
+                    ),
+                   ),
+                 ],
                 ),
-              ),
-              const SizedBox(height: 12),
-              const Text('data'),
-            ],
+                ),
+             const SizedBox(height: 12),
+             Text('Layanan',
+             style: regularBlackTextStyle.copyWith(fontSize: 15),
+             ),
+             const SizedBox(height: 120),
+             ],
+           ),
           ),
         ),
         bottomNavigationBar: Container(
