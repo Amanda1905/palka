@@ -45,11 +45,86 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   ]
               ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 45,
+                  right: 18,
+                  left: 18,
+                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 3,
+                        offset: const Offset(
+                          0, 2), // changes position of shadow
+                      ),
+                    ],
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Change Profil',
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          borderSide: BorderSide.none,
+                        ),
+                        prefixIcon: const Icon(Icons.person),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 15),
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 3,
+                            offset: const Offset(
+                              0, 2), // changes position of shadow
+                          ),
+                        ],
+                        ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Change Password',
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25),
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: const Icon(Icons.person),
+                            ),
+                            style: const TextStyle(
+                              color: Colors.black,
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(height: 15),
+                  ]
+                ),
+              ),
             ],
-        ),
-        
-        
-      ),
+         ),
 
       bottomNavigationBar: Container(
           color: Colors.blue.shade900,
@@ -79,7 +154,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                 onTabChange: (int index) {
                   switch (index) {
                     case 0:
-                      Navigator.push(
+                      Navigator.pop(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const HomeScreen(),
@@ -108,6 +183,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                 }),
           ),
         ),
+      ),
       ),
     );
   }

@@ -37,6 +37,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ],
         ),
       ),
+      body: SingleChildScrollView(
+        
+      ),
 
       bottomNavigationBar: Container(
           color: Colors.blue.shade900,
