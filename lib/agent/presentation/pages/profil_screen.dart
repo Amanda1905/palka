@@ -125,7 +125,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
               ),
             ],
          ),
-
+      ),
       bottomNavigationBar: Container(
           color: Colors.blue.shade900,
           child: Padding(
@@ -183,7 +183,6 @@ class _ProfilScreenState extends State<ProfilScreen> {
                 }),
           ),
         ),
-      ),
       ),
     );
   }
