@@ -2,132 +2,175 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:lapka/agent/presentation/pages/history_screen.dart';
 import 'package:lapka/agent/presentation/pages/profil_screen.dart';
-import 'package:lapka/agent/presentation/widget/theme.dart';
+import 'package:lapka/agent/presentation/constant/data_kapal_table.dart';
+import 'package:lapka/agent/presentation/constant/list_service_widget.dart';
+import 'package:lapka/agent/presentation/constant/theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeState extends State<HomeScreen> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Row(
+          children: [
+            const CircleAvatar(
+              foregroundImage: AssetImage("assets/images/profile.png"),
+            ),
+            const SizedBox(width: 12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Welcome',
+                  style: mediumBlackTextStyle.copyWith(fontSize: 12),
+                ),
+                Text(
+                  'Amanda Putri',
+                  style: semiboldBlackTextStyle.copyWith(fontSize: 13),
+                ),
+              ],
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.notifications_none_outlined,
+              color: Colors.amber,
+            ),
+          )
+        ],
+        automaticallyImplyLeading: false, // untuk nonaktifkan arrow back nya
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Welcome',
-                    style: boldBlackTextStyle.copyWith(fontSize: 12),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(18),
+                child: Container(
+                  height: 180,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/banner.png'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Text(
-                    'Amanda Putri',
-                    style: boldBlackTextStyle.copyWith(fontSize: 13),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 70),
+                      child: Text(
+                        'Make delivering your cargo easier and more practical',
+                        style:
+                            boldwhitetext, // pastikan boldWhiteTextStyle sudah didefinisikan
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
-                ],
+                ),
               ),
-              const CircleAvatar(
-                foregroundImage: AssetImage("assets/images/profile.png"),
+              const SizedBox(height: 18),
+              Text(
+                'Layanan',
+                style: regularBlackTextStyle.copyWith(fontSize: 15),
               ),
+              const Divider(),
+              const SizedBox(height: 14),
+              const ListServiceWidget(),
+              const SizedBox(height: 18),
+              Text('Data Kapal',
+                  style: regularBlackTextStyle.copyWith(fontSize: 15)),
+              const Divider(),
+              const SizedBox(height: 14),
+              const DataKapalTable(),
             ],
           ),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-           padding: const EdgeInsets.all(16),
-           child: Column(
-             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(28),
-              child: Stack(
-                 children: [
-                   Image.asset('assets/images/banner.png'),
-                   Positioned(
-                     top: 50,
-                     left: 0,
-                     right: 0,
-                     child: Text(
-                     'make delivering your cargo\neasier and more practical',
-                     style: regularwhitetext.copyWith(fontSize: 18),
-                     textAlign: TextAlign.center,
-                    ),
-                   ),
-                 ],
-                ),
-                ),
-             const SizedBox(height: 12),
-             Text('Layanan',
-             style: regularBlackTextStyle.copyWith(fontSize: 15),
-             ),
-             const SizedBox(height: 120),
-             ],
-           ),
-          ),
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: deepblueColor,
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 20,
+              color: Colors.black.withOpacity(.1),
+            )
+          ],
         ),
-        bottomNavigationBar: Container(
-          color: Colors.blue.shade900,
+        child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: GNav(
-                backgroundColor: Colors.blue.shade900,
-                color: Colors.white,
-                activeColor: Colors.black,
-                tabBackgroundColor: Colors.yellowAccent.shade700,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                tabs: const [
-                  GButton(
-                    icon: Icons.home,
-                    text: 'Home',
-                  ),
-                  GButton(
-                    icon: Icons.history,
-                    text: 'History',
-                  ),
-                  GButton(
-                    icon: Icons.person,
-                    text: 'Profil',
-                  ),
-                ],
-                onTabChange: (int index) {
-                  switch (index) {
-                    case 0:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                      );
-                      break;
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 9),
+                  child: GNav(
+              activeColor: Colors.white,
+              iconSize: 24,
+              backgroundColor: deepblueColor,
+              color: Colors.grey,
+              tabBackgroundColor: Colors.amber[700]!,
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              textStyle: semiboldwhitetext,
+              tabs: const [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                ),
+                GButton(
+                  icon: Icons.history_rounded,
+                  text: 'History',
+                ),
+                GButton(
+                  icon: Icons.person,
+                  text: 'Profil',
+                ),
+              ],
+              selectedIndex: selectedIndex,
+              onTabChange: (int index) {
+                setState(() {
+                  selectedIndex = index;
+                });
+                switch (index) {
+                  case 0:
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
+                    break;
 
-                    case 1:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HistoryScreen(),
-                        ),
-                      );
-                      break;
+                  case 1:
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HistoryScreen(),
+                      ),
+                    );
+                    break;
 
-                    case 3:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilScreen(),
-                        ),
-                      );
-                      break;
-                  }
-                }),
+                  case 2:
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilScreen(),
+                      ),
+                    );
+                    break;
+                }
+              },
+            ),
           ),
         ),
       ),

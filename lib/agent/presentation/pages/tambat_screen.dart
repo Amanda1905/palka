@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:lapka/agent/data/models/model_jasa.dart';
 import 'package:lapka/agent/presentation/constant/theme.dart';
 
-class LabuhScreen extends StatefulWidget {
-  const LabuhScreen({super.key});
+class TambatScreen extends StatefulWidget {
+  const TambatScreen({super.key});
 
   @override
-  State<LabuhScreen> createState() => _LabuhScreenState();
+  State<TambatScreen> createState() => _TambatScreenState();
 }
 
-class _LabuhScreenState extends State<LabuhScreen> {
+class _TambatScreenState extends State<TambatScreen> {
   DateTime? _selectedStartDate;
   DateTime? _selectedEndDate;
 
@@ -55,19 +55,8 @@ class _LabuhScreenState extends State<LabuhScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text('Jasa Labuh', 
-        style: semibolddeepblueextStyle.copyWith(fontSize: 18)),
+        title: const Text('Jasa Tambat'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications_none_outlined,
-              color: Colors.amber,
-            ),
-          )
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -91,7 +80,7 @@ class _LabuhScreenState extends State<LabuhScreen> {
                       Container(
                         height: 50,
                         width: 50,
-                       decoration: const BoxDecoration(
+                        decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/images/bannerservice.png'))),
                       ),

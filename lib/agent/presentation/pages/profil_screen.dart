@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:lapka/agent/presentation/pages/changeprofil.dart';
+import 'package:lapka/agent/presentation/pages/changepw.dart';
 import 'package:lapka/agent/presentation/pages/history_screen.dart';
 import 'package:lapka/agent/presentation/pages/home_screen.dart';
-import 'package:lapka/agent/presentation/widget/theme.dart';
+import 'package:lapka/agent/presentation/constant/theme.dart';
 
 class ProfilScreen extends StatefulWidget {
   const ProfilScreen({super.key});
@@ -12,6 +14,7 @@ class ProfilScreen extends StatefulWidget {
 }
 
 class _ProfilScreenState extends State<ProfilScreen> {
+  int selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,154 +36,183 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   ),
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const CircleAvatar(
-                      foregroundImage: AssetImage("assets/images/profile.png"),
-                    ),
-                    Text( 
-                      'Amanda Putri',
-                      style: semiboldwhitetext.copyWith(fontSize: 22),
-                    ),
-                  ]
-              ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 45,
-                  right: 18,
-                  left: 18,
-                ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 3,
-                        offset: const Offset(
-                          0, 2), // changes position of shadow
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 50,
+                        foregroundImage:
+                            AssetImage("assets/images/profile.png"),
                       ),
-                    ],
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Change Profil',
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                        prefixIcon: const Icon(Icons.person),
-                        ),
-                        style: const TextStyle(
-                          color: Colors.black,
-                          ),
-                        ),
-                      ),
-
                       const SizedBox(height: 15),
-                      Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 3,
-                            offset: const Offset(
-                              0, 2), // changes position of shadow
-                          ),
-                        ],
+                      Text(
+                        'Amanda Putri',
+                        style: semiboldwhitetext.copyWith(fontSize: 20),
+                      ),
+                    ]),
+              ),
+              const SizedBox(height: 25),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 5, 12, 4),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 60,
+                      child: Card(
+                        child: Row(
+                          children: [
+                            const Icon(Icons.person_2_outlined),
+                            const SizedBox(width: 50),
+                            Text('Change Profil', style: mediumBlackTextStyle.copyWith(fontSize: 15)),
+                            const SizedBox(width: 125),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context, 
+                                    MaterialPageRoute(
+                                      builder: (context) => const Changeprofil(),
+                                    ),
+                                  );
+                                },
+                                icon: const Icon(
+                                    Icons.arrow_forward_ios_outlined)),
+                          ],
                         ),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Change Password',
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              borderSide: BorderSide.none,
-                            ),
-                            prefixIcon: const Icon(Icons.person),
-                            ),
-                            style: const TextStyle(
-                              color: Colors.black,
-                              ),
-                            ),
-                          ),
-
-                          const SizedBox(height: 15),
-                  ]
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      height: 60,
+                      child: Card(
+                        child: Row(
+                          children: [
+                            const Icon(Icons.lock_clock_outlined),
+                            const SizedBox(width: 50),
+                            Text('Change Password',
+                                style: mediumBlackTextStyle.copyWith(fontSize: 15)),
+                                const SizedBox(width: 85),
+                            IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context, 
+                                    MaterialPageRoute(
+                                      builder: (context) => const Changepw(),
+                                    ),
+                                  );
+                                },
+                                icon: const Icon(
+                                    Icons.arrow_forward_ios_outlined)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      height: 60,
+                      child: Card(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.person),
+                            const SizedBox(width: 50),
+                            Text('Sign Out',
+                            style: mediumBlackTextStyle.copyWith(fontSize: 15)),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      height: 60,
+                      child: Card(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Icon(Icons.delete, color: Colors.red),
+                            const SizedBox(width: 50),
+                            Text('Delete Account',
+                            style: mediumdeepredTextStyle.copyWith(fontSize: 15)),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],
-         ),
-      ),
-      bottomNavigationBar: Container(
-          color: Colors.blue.shade900,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: GNav(
-                backgroundColor: Colors.blue.shade900,
-                color: Colors.white,
-                activeColor: Colors.black,
-                tabBackgroundColor: Colors.yellowAccent.shade700,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                tabs: const [
-                  GButton(
-                    icon: Icons.home,
-                    text: 'Home',
-                  ),
-                  GButton(
-                    icon: Icons.history,
-                    text: 'History',
-                  ),
-                  GButton(
-                    icon: Icons.person,
-                    text: 'Profil',
-                  ),
-                ],
-                onTabChange: (int index) {
-                  switch (index) {
-                    case 0:
-                      Navigator.pop(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                      );
-                      break;
+          ),
+        ),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            color: deepblueColor,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 20,
+                color: Colors.black.withOpacity(.1),
+              )
+            ],
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+              child: GNav(
+                  activeColor: Colors.white,
+                  iconSize: 24,
+                  backgroundColor: deepblueColor,
+                  color: Colors.grey,
+                  tabBackgroundColor: Colors.amber[700]!,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                  textStyle: semiboldwhitetext,
+                  tabs: const [
+                    GButton(
+                      icon: Icons.home,
+                      text: 'Home',
+                    ),
+                    GButton(
+                      icon: Icons.history_rounded,
+                      text: 'History',
+                    ),
+                    GButton(
+                      icon: Icons.person,
+                      text: 'Profil',
+                    ),
+                  ],
+                  selectedIndex: selectedIndex,
+                  onTabChange: (int index) {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                    switch (index) {
+                      case 0:
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
+                        break;
 
-                    case 1:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HistoryScreen(),
-                        ),
-                      );
-                      break;
+                      case 1:
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HistoryScreen(),
+                          ),
+                        );
+                        break;
 
-                    case 3:
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilScreen(),
-                        ),
-                      );
-                      break;
-                  }
-                }),
+                      case 2:
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfilScreen(),
+                          ),
+                        );
+                        break;
+                    }
+                  }),
+            ),
           ),
         ),
       ),

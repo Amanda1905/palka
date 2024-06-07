@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/agent/presentation/pages/home_screen.dart';
 import 'package:lapka/agent/presentation/pages/reg_screen.dart';
-import 'package:lapka/agent/presentation/widget/theme.dart';
+import 'package:lapka/agent/presentation/constant/theme.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

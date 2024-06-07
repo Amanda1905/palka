@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lapka/agent/presentation/pages/login_screen.dart';
 import 'package:lapka/agent/presentation/pages/reg_screen.dart';
-import 'package:lapka/agent/presentation/widget/theme.dart';
+import 'package:lapka/agent/presentation/constant/theme.dart';
 
 
 class WelcomeScreen extends StatelessWidget {

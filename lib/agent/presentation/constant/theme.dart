@@ -1,6 +1,6 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
  import 'package:google_fonts/google_fonts.dart';
- 
+
  Color purpleColor = Colors.purple;
  Color tealColor = const Color(0xff29A19C);
  Color buttonColor = const Color(0xff00DC88);
@@ -9,6 +9,7 @@
  Color deepblueColor = Colors.blue.shade900;
  Color blackColor = Colors.black;
  Color whiteColor = Colors.white;
+ Color deepredColor = Colors.red;
 
  //WHITE TEXTSTYLE-----------------------------------
 TextStyle boldwhitetext = GoogleFonts.poppins(
@@ -83,5 +84,47 @@ TextStyle regularPURPLETextStyle = GoogleFonts.poppins(
 
 TextStyle mediumblueTextStyle = GoogleFonts.poppins(
   color: blueColor,
+  fontWeight: FontWeight.normal,
+);
+
+//------------------------------------------------------
+TextStyle bolddeepblueTextStyle = GoogleFonts.poppins(
+  color: deepblueColor,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle semibolddeepblueextStyle = GoogleFonts.poppins(
+  color: deepblueColor,
+  fontWeight: FontWeight.w600,
+);
+
+TextStyle mediumdeepblueTextStyle = GoogleFonts.poppins(
+  color: deepblueColor,
+  fontWeight: FontWeight.w500,
+);
+
+TextStyle regulardeepblueTextStyle = GoogleFonts.poppins(
+  color: deepblueColor,
+  fontWeight: FontWeight.normal,
+);
+
+//RED TEXTSTYLE-----------------------------------
+TextStyle bolddeepredTextStyle = GoogleFonts.poppins(
+  color: deepredColor,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle semibolddeepredextStyle = GoogleFonts.poppins(
+  color: deepredColor,
+  fontWeight: FontWeight.w600,
+);
+
+TextStyle mediumdeepredTextStyle = GoogleFonts.poppins(
+  color: deepredColor,
+  fontWeight: FontWeight.w500,
+);
+
+TextStyle regulardeepredTextStyle = GoogleFonts.poppins(
+  color: deepredColor,
   fontWeight: FontWeight.normal,
 );
