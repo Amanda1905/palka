@@ -1,0 +1,11 @@
+// "start_layanan": "2023-12-13T00:00:00",
+//         "finish_layanan": "2023-12-15T00:00:00", 
+//         "qty": 1000,
+//         "total_tarif": "1000000",
+//         "keterangan": "21.00",
+//         "data_kapal": 1,
+//         "jenis_pelayanan": 2,
+//         "tarif_dasar": 1,
+//         "status": 1,
+//         "assign_to_id": 2,
+//         "satuan_detail": 1

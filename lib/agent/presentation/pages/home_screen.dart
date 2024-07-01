@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:lapka/agent/presentation/pages/history_screen.dart';
+import 'package:lapka/agent/presentation/pages/history_labuh.dart';
 import 'package:lapka/agent/presentation/pages/profil_screen.dart';
-import 'package:lapka/agent/presentation/constant/data_kapal_table.dart';
 import 'package:lapka/agent/presentation/constant/list_service_widget.dart';
 import 'package:lapka/agent/presentation/constant/theme.dart';
 
@@ -22,11 +21,8 @@ class _HomeState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const CircleAvatar(
-              foregroundImage: AssetImage("assets/images/profile.png"),
-            ),
-            const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,17 +36,11 @@ class _HomeState extends State<HomeScreen> {
                 ),
               ],
             ),
+            const CircleAvatar(
+              foregroundImage: AssetImage("assets/images/profile.png"),
+            ),
           ],
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications_none_outlined,
-              color: Colors.amber,
-            ),
-          )
-        ],
         automaticallyImplyLeading: false, // untuk nonaktifkan arrow back nya
       ),
       body: SingleChildScrollView(
@@ -91,12 +81,12 @@ class _HomeState extends State<HomeScreen> {
               const Divider(),
               const SizedBox(height: 14),
               const ListServiceWidget(),
-              const SizedBox(height: 18),
-              Text('Data Kapal',
-                  style: regularBlackTextStyle.copyWith(fontSize: 15)),
-              const Divider(),
-              const SizedBox(height: 14),
-              const DataKapalTable(),
+              // const SizedBox(height: 18),
+              // Text('Data Kapal',
+              //     style: regularBlackTextStyle.copyWith(fontSize: 15)),
+              // const Divider(),
+              // const SizedBox(height: 14),
+              // const DataKapalTable(),
             ],
           ),
         ),
@@ -155,7 +145,7 @@ class _HomeState extends State<HomeScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HistoryScreen(),
+                        builder: (context) => const HistoryLabuh(),
                       ),
                     );
                     break;

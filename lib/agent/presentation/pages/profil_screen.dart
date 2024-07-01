@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:lapka/agent/presentation/pages/changeprofil.dart';
 import 'package:lapka/agent/presentation/pages/changepw.dart';
-import 'package:lapka/agent/presentation/pages/history_screen.dart';
+import 'package:lapka/agent/presentation/pages/history_labuh.dart';
 import 'package:lapka/agent/presentation/pages/home_screen.dart';
 import 'package:lapka/agent/presentation/constant/theme.dart';
+import 'package:lapka/agent/presentation/pages/login_screen.dart';
 
 class ProfilScreen extends StatefulWidget {
   const ProfilScreen({super.key});
@@ -15,6 +16,7 @@ class ProfilScreen extends StatefulWidget {
 
 class _ProfilScreenState extends State<ProfilScreen> {
   int selectedIndex = 2;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,105 +38,227 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   ),
                 ),
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const CircleAvatar(
-                        radius: 50,
-                        foregroundImage:
-                            AssetImage("assets/images/profile.png"),
-                      ),
-                      const SizedBox(height: 15),
-                      Text(
-                        'Amanda Putri',
-                        style: semiboldwhitetext.copyWith(fontSize: 20),
-                      ),
-                    ]),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CircleAvatar(
+                      radius: 50,
+                      foregroundImage: AssetImage("assets/images/profile.png"),
+                    ),
+                    const SizedBox(height: 15),
+                    Text(
+                      'Amanda Putri',
+                      style: semiboldwhitetext.copyWith(fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 25),
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 5, 12, 4),
                 child: Column(
                   children: [
-                    Container(
-                      height: 60,
-                      child: Card(
-                        child: Row(
-                          children: [
-                            const Icon(Icons.person_2_outlined),
-                            const SizedBox(width: 50),
-                            Text('Change Profil', style: mediumBlackTextStyle.copyWith(fontSize: 15)),
-                            const SizedBox(width: 125),
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context, 
-                                    MaterialPageRoute(
-                                      builder: (context) => const Changeprofil(),
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(Icons.person_2_outlined),
+                        title: Text(
+                          'Change Profil',
+                          style: mediumBlackTextStyle.copyWith(fontSize: 15),
+                        ),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Changeprofil(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(Icons.lock_clock_outlined),
+                        title: Text(
+                          'Change Password',
+                          style: mediumBlackTextStyle.copyWith(fontSize: 15),
+                        ),
+                        trailing: const Icon(Icons.arrow_forward_ios_outlined),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Changepw(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(Icons.person),
+                        title: Text(
+                          'Sign Out',
+                          style: mediumBlackTextStyle.copyWith(fontSize: 15),
+                        ),
+                        onTap: () async {
+                          bool confirm = false;
+                          await showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                padding: const EdgeInsets.all(30.0),
+                                child: Wrap(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Sign Out",
+                                            style: boldBlackTextStyle.copyWith(
+                                                fontSize: 15),
+                                          ),
+                                          const SizedBox(height: 20),
+                                          Text(
+                                            'Are you sure you want to sign out?',
+                                            style: regularBlackTextStyle
+                                                .copyWith(fontSize: 15),
+                                          ),
+                                          const SizedBox(height: 20),
+                                          Image.asset("assets/images/out.png"),
+                                          const SizedBox(height: 20),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Color(0xff5875DC),
+                                              shadowColor: Colors.black,
+                                            ),
+                                            onPressed: () {
+                                              confirm = true;
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const LoginScreen(),
+                                                  ));
+                                            },
+                                            child: Text("Yes",
+                                                style: mediumWhiteTextStyle
+                                                    .copyWith(fontSize: 15)),
+                                          ),
+                                          const SizedBox(height: 15),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor: Colors.white),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text("No",
+                                                style: mediumBlackTextStyle
+                                                    .copyWith(fontSize: 15)),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  );
-                                },
-                                icon: const Icon(
-                                    Icons.arrow_forward_ios_outlined)),
-                          ],
-                        ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                          if (confirm) {
+                            print("Confirmed!");
+                          }
+                        },
                       ),
                     ),
                     const SizedBox(height: 15),
-                    Container(
-                      height: 60,
-                      child: Card(
-                        child: Row(
-                          children: [
-                            const Icon(Icons.lock_clock_outlined),
-                            const SizedBox(width: 50),
-                            Text('Change Password',
-                                style: mediumBlackTextStyle.copyWith(fontSize: 15)),
-                                const SizedBox(width: 85),
-                            IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context, 
-                                    MaterialPageRoute(
-                                      builder: (context) => const Changepw(),
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(Icons.delete, color: Colors.red),
+                        title: Text(
+                          'Delete Account',
+                          style: mediumdeepredTextStyle.copyWith(fontSize: 15),
+                        ),
+                        onTap: () async {
+                          bool confirm = false;
+                          await showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                padding: const EdgeInsets.all(30.0),
+                                child: Wrap(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Text("Delete Account",
+                                              style: boldBlackTextStyle
+                                                  .copyWith(fontSize: 15)),
+                                          const SizedBox(height: 20),
+                                          Text(
+                                            'Are you sure you want to delete this account?',
+                                            style: mediumBlackTextStyle
+                                                .copyWith(fontSize: 15),
+                                                textAlign: TextAlign.center,
+                                          ),
+                                          const SizedBox(height: 20),
+                                          Image.asset(
+                                              "assets/images/delete.png"),
+                                          const SizedBox(height: 20),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  Color(0xff5875DC),
+                                              shadowColor: Colors.black,
+                                            ),
+                                            onPressed: () {
+                                              confirm = true;
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const LoginScreen(),
+                                                  ));
+                                            },
+                                            child: Text("Yes",
+                                                style: mediumWhiteTextStyle
+                                                    .copyWith(fontSize: 15)),
+                                          ),
+                                          const SizedBox(height: 15),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Colors.white,
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              "No",
+                                              style: mediumBlackTextStyle
+                                                  .copyWith(fontSize: 15),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  );
-                                },
-                                icon: const Icon(
-                                    Icons.arrow_forward_ios_outlined)),
-                          ],
-                        ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                          if (confirm) {
+                            print("Account Deleted!");
+                          }
+                        },
                       ),
                     ),
-                    const SizedBox(height: 15),
-                    Container(
-                      height: 60,
-                      child: Card(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Icon(Icons.person),
-                            const SizedBox(width: 50),
-                            Text('Sign Out',
-                            style: mediumBlackTextStyle.copyWith(fontSize: 15)),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    Container(
-                      height: 60,
-                      child: Card(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const Icon(Icons.delete, color: Colors.red),
-                            const SizedBox(width: 50),
-                            Text('Delete Account',
-                            style: mediumdeepredTextStyle.copyWith(fontSize: 15)),
-                          ],
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
@@ -148,7 +272,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
               BoxShadow(
                 blurRadius: 20,
                 color: Colors.black.withOpacity(.1),
-              )
+              ),
             ],
           ),
           child: SafeArea(
@@ -156,62 +280,63 @@ class _ProfilScreenState extends State<ProfilScreen> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
               child: GNav(
-                  activeColor: Colors.white,
-                  iconSize: 24,
-                  backgroundColor: deepblueColor,
-                  color: Colors.grey,
-                  tabBackgroundColor: Colors.amber[700]!,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                  textStyle: semiboldwhitetext,
-                  tabs: const [
-                    GButton(
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.history_rounded,
-                      text: 'History',
-                    ),
-                    GButton(
-                      icon: Icons.person,
-                      text: 'Profil',
-                    ),
-                  ],
-                  selectedIndex: selectedIndex,
-                  onTabChange: (int index) {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                    switch (index) {
-                      case 0:
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                          ),
-                        );
-                        break;
+                activeColor: Colors.white,
+                iconSize: 24,
+                backgroundColor: deepblueColor,
+                color: Colors.grey,
+                tabBackgroundColor: Colors.amber[700]!,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                textStyle: semiboldwhitetext,
+                tabs: const [
+                  GButton(
+                    icon: Icons.home,
+                    text: 'Home',
+                  ),
+                  GButton(
+                    icon: Icons.history_rounded,
+                    text: 'History',
+                  ),
+                  GButton(
+                    icon: Icons.person,
+                    text: 'Profil',
+                  ),
+                ],
+                selectedIndex: selectedIndex,
+                onTabChange: (int index) {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                  switch (index) {
+                    case 0:
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                      break;
 
-                      case 1:
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HistoryScreen(),
-                          ),
-                        );
-                        break;
+                    case 1:
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HistoryLabuh(),
+                        ),
+                      );
+                      break;
 
-                      case 2:
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ProfilScreen(),
-                          ),
-                        );
-                        break;
-                    }
-                  }),
+                    case 2:
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilScreen(),
+                        ),
+                      );
+                      break;
+                  }
+                },
+              ),
             ),
           ),
         ),

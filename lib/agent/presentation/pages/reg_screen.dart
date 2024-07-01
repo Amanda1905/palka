@@ -78,7 +78,7 @@ class _RegScreenState extends State<RegScreen> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukan nama',
+                        hintText: 'Username',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -114,7 +114,7 @@ class _RegScreenState extends State<RegScreen> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukan email',
+                        hintText: 'Email',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -151,7 +151,7 @@ class _RegScreenState extends State<RegScreen> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukann password',
+                        hintText: 'Password',
                         filled: false,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -201,7 +201,7 @@ class _RegScreenState extends State<RegScreen> {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukann password',
+                        hintText: 'Confirm Password',
                         filled: false,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(

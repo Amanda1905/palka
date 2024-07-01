@@ -5,6 +5,7 @@ final formatter = DateFormat.yMd();
 enum DataKapalCategory {jayakarta, kordisinir, jurimudi, borinerisia}
 enum LayananKapalCategory {service1, service2, service3, service4}
 enum JasaCategory{jasaLabuh, jasaTambat, jasaYatch, jasaAirBersih}
+enum SatuanDetailCategory{ton,kg}
 
 
 class Jasa{

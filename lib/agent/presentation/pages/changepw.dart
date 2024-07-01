@@ -25,7 +25,7 @@ class Changepw extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 300,
+              height: 240,
               decoration: BoxDecoration(
                 color: deepblueColor,
                 borderRadius: const BorderRadius.only(
@@ -56,7 +56,7 @@ class Changepw extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "New Password",
+                    "Password",
                   style: regularBlackTextStyle.copyWith(fontSize: 15),
                   ),
                   const SizedBox(height: 12),
@@ -76,7 +76,7 @@ class Changepw extends StatelessWidget {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukan password baru',
+                        hintText: 'New Password',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -89,7 +89,7 @@ class Changepw extends StatelessWidget {
                   const SizedBox(height: 15),
 
                   Text(
-                    "Repeat New Password",
+                    "Confirm Password",
                   style: regularBlackTextStyle.copyWith(fontSize: 15),
                   ),
                   const SizedBox(height: 12),
@@ -109,7 +109,7 @@ class Changepw extends StatelessWidget {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Enter your repeat new password',
+                        hintText: 'Confirm New Password',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(

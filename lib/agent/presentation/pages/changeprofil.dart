@@ -25,7 +25,7 @@ class Changeprofil extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 300,
+              height: 240,
               decoration: BoxDecoration(
                 color: deepblueColor,
                 borderRadius: const BorderRadius.only(
@@ -76,7 +76,7 @@ class Changeprofil extends StatelessWidget {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukan username baru',
+                        hintText: 'New Username',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -109,7 +109,7 @@ class Changeprofil extends StatelessWidget {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Masukan email baru',
+                        hintText: 'New Email',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(

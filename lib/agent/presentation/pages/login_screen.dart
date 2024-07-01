@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: 'Masukan email',
+                            hintText: 'Email',
                             filled: true,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: 'Masukan password',
+                            hintText: 'Password',
                             filled: false,
                             fillColor: Colors.white,
                             border: OutlineInputBorder(
@@ -164,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             backgroundColor: const Color(0xff5875DC),
                             minimumSize: const Size.fromHeight(45)),
                         child: Text(
-                          "Masuk",
+                          "Login",
                           textAlign: TextAlign.center,
                           style: mediumWhiteTextStyle.copyWith(fontSize: 18),
                         ),
@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) => const RegScreen()));
                             },
                             child: Text(
-                              "Daftar",
+                              "Sign Up",
                               textAlign: TextAlign.center,
                               style:
                                   regularPURPLETextStyle.copyWith(fontSize: 9),
